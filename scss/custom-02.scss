@@ -1,0 +1,48 @@
+// custom-02.scss
+
+// Deuxième méthode : Inclure quelques parties de bootstrap
+
+// 1. Ajouter tout d'abord les fonctions (pour pouvoir manipuler les couleurs, les SVG...)
+
+@import "../node_modules/bootstrap/scss/functions";
+
+// 2. C'est ici qu'il faut inclure toutes les surcharge de variables
+
+// 3. Inclure le reste des variables bootstrap requises pour les feuilles de style, dont les mode de couleurs différents (light, dark)
+
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
+
+// 4. On inclu ici les surcharges de map
+
+// ajouter un breakpoint à bootstrap
+$custom-grid-breakpoint: (
+    xxxl: 1600px
+);
+
+$custom-breakpoint:(
+    xxxl: 1560px
+);
+
+$grid-breakpoints: map-merge($grid-breakpoints, $custom-grid-breakpoint );
+$container-max-widths: map-merge($container-max-widths, $custom-breakpoint );
+
+
+// 5. Inclure le reste des partie requises
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+
+// 6. Ici on inclu les parties optionnelles selon le besoin
+@import "../node_modules/bootstrap/scss/utilities";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+@import "../node_modules/bootstrap/scss/images";
+@import "../node_modules/bootstrap/scss/containers";
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/helpers";
+
+// 7. Ici on inclu en option les utilitaires d'API en dernier afin de générer les classes basées sur le map Sass dans utilities.scss
+@import "../node_modules/bootstrap/scss/utilities/api";
+
+// 8. ajouter enfin le scss customisé

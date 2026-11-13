@@ -1,0 +1,154 @@
+@use "sass:map";
+// couleurs
+$black-color: #333;
+$white-color: #fff;
+$code-color: #d63384;
+//corps des pages
+$body-font: Arial, Verdana, Geneva, Tahoma, sans-serif;
+$body-background: #f4f5f0;
+$body-color: $black-color;
+$body-size: 16px;
+//goutières
+$gutter-x: 0.5rem;
+$gutter-y: 0.5rem;
+
+//listes
+$breakpointsList: 540px, 720px, 690px;
+
+// map, il faut ajoute sass:use map en début de script
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+$rwd-max-width: (
+  sm: 540,
+  md: 720,
+  lg: 960,
+  xl: 1140,
+  xxl: 1320
+);
+
+/*
+$rwd-bp-column-width: (
+  sm: calc(100% - 2*$gutter-x),
+  md: calc(100% - 2*$gutter-x),
+  lg: calc(50% - 2*$gutter-x),
+  xl: calc(33% - 2*$gutter-x),
+  xxl: calc(33% - 2*$gutter-x)
+);
+*/
+
+
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+@mixin links($color: darkblue, $hover: darkred){
+    a{
+        color: $color;
+        &:hover{
+            color: $hover;
+        }
+    }
+}
+
+body {
+    margin: 0;
+    background-color: $body-background;
+    font-family: $body-font;
+    color: $body-color;
+    font-size: $body-size;
+    a {
+        text-decoration: none;
+    }
+    > {
+        nav{
+            ul{
+                list-style-type: none;
+                margin: 0;
+                > li{
+                    @include links;
+                }
+            }
+        }
+        footer{
+            nav{
+                ul{
+                    li{
+                        @include links($color: darkred, $hover: darkblue);
+                    }
+                }
+            }
+            @include links($color: darkred, $hover: darkblue);
+        }
+    }
+}
+    
+
+code{
+    color: $code-color;
+}
+
+pre{
+    overflow: auto;
+}
+
+section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+@mixin alert($alert: lightblue){
+    background: $alert;
+    box-shadow: 0 0 1px rgba($alert, 0.25);
+    color: black;
+    margin: $gutter-y;
+    padding: $gutter-x;
+    border-radius: calc($gutter-x/2);
+}
+
+.info{
+    @include alert;
+}
+
+.danger{
+    @include alert($alert: orange);
+}
+
+.success{
+    @include alert($alert: lightgreen);
+}
+
+
+
+// boucle des breakpoints utilisés pour une classe de type container
+//@each $breakpoint in $breakpointsList{
+//    .maxwidth#{$breakpoint}{
+//        max-width: #{$breakpoint};
+//    }
+//}
+
+// utiliser des maps pour faire des boucles plus complètes :
+.container{
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $gutter-x;
+    padding-right: $gutter-x;
+}
+
+@each $breakpoint, $value in $breakpoints {
+    @media screen and (min-width: #{$value}) {
+        .container{
+            max-width: #{map.get($rwd-max-width, $breakpoint)}px;
+        }
+
+        //.row > *{
+        //    max-width: #{map.get($rwd-bp-column-width, $breakpoint)};
+        //}
+    }
+}

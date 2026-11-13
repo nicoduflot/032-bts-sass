@@ -1,0 +1,121 @@
+/*
+$rwd-bp-column-width: (
+  sm: calc(100% - 2*$gutter-x),
+  md: calc(100% - 2*$gutter-x),
+  lg: calc(50% - 2*$gutter-x),
+  xl: calc(33% - 2*$gutter-x),
+  xxl: calc(33% - 2*$gutter-x)
+);
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #f4f5f0;
+  font-family: Arial, Verdana, Geneva, Tahoma, sans-serif;
+  color: #333;
+  font-size: 16px;
+}
+body a {
+  text-decoration: none;
+}
+body > nav ul {
+  list-style-type: none;
+  margin: 0;
+}
+body > nav ul > li a {
+  color: darkblue;
+}
+body > nav ul > li a:hover {
+  color: darkred;
+}
+body > footer nav ul li a {
+  color: darkred;
+}
+body > footer nav ul li a:hover {
+  color: darkblue;
+}
+body > footer a {
+  color: darkred;
+}
+body > footer a:hover {
+  color: darkblue;
+}
+
+code {
+  color: #d63384;
+}
+
+pre {
+  overflow: auto;
+}
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.info {
+  background: lightblue;
+  box-shadow: 0 0 1px rgba(173, 216, 230, 0.25);
+  color: black;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.danger {
+  background: orange;
+  box-shadow: 0 0 1px rgba(255, 165, 0, 0.25);
+  color: black;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.success {
+  background: lightgreen;
+  box-shadow: 0 0 1px rgba(144, 238, 144, 0.25);
+  color: black;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+@media screen and (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+/*# sourceMappingURL=my-sass.css.map */
